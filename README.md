@@ -8,7 +8,7 @@ Rekomendasi film (_movie recommendation_) adalah salah satu aspek yang sangat pe
 Seorang pengguna ingin menerima rekomendasi film berdasarkan film-film yang telah mereka tonton dan sukai sebelumnya. Dengan menganalisis karakteristik film seperti berdasarkan dari ringkasan, sistem dapat memberikan rekomendasi film yang memiliki kesamaan karakteristik dengan film-film yang mereka sukai.
 
 
-Format Referensi: [Credit risk assessment mechanism of personal auto loan based on PSO-XGBoost Model](https://doi.org/10.1007/s40747-022-00854-y) 
+Format Referensi: [Implementasi Algoritma Cosine Similarity Dan Metode TF-IDF Berbasis PHP Untuk Menghasilkan Rekomendasi Seminar](https://publikasi.mercubuana.ac.id/index.php/fasilkom/article/view/8830/3555) 
 
 ## Business Understanding
 
@@ -30,10 +30,9 @@ Tujuan dari pernyataan masalah:
 
 
 ### Solution statements
-- Melakukan analisis data, eksplorasi data film, dan persiapan data.
-- Mengembangkan model content-based filtering berdasarkan karakteristik film.
+- Melakukan analisis data, eksplorasi data film, dan _data preparation_.
+- Mengembangkan model content-based filtering berdasarkan ringkasan film.
 - Memberikan rekomendasi film kepada pengguna berdasarkan ringkasan film.
-MASIH PERLU DIPERBAIKI
 
 
 ## Data Understanding
@@ -44,9 +43,43 @@ MASIH PERLU DIPERBAIKI
 - Terdapat beberapa baris yang kosong (missing value) tapi karena tidak berpengaruh maka dibiarkan saja. 
 
 ### Exploratory Data Analysis
-- Grade
-![Grade](gambar\image-2.png)
-merupakan resiko peminjaman yang dibuat oleh perusahaan, dari A-G dimana G merupakan resiko peminjaman paling besar.
+- vote_count
+
+![image](https://github.com/athar3/MovieRecommendation/assets/72434013/cdcce5f7-1367-4bac-9399-08e538fcf224)
+
+Berisi list film dengan nilai vote terbanyak
+
+- popularity
+  
+![image](https://github.com/athar3/MovieRecommendation/assets/72434013/48f1d89b-51f0-471d-8354-5a9666c19c27)
+
+Berisi list film paling populer
+
+- runtime
+  
+![image](https://github.com/athar3/MovieRecommendation/assets/72434013/c323a424-3038-4275-8768-467e7d2c0e8b)
+
+berisi list film dengan runtime terlama.
+
+- vote_count
+
+![image](https://github.com/athar3/MovieRecommendation/assets/72434013/cdcce5f7-1367-4bac-9399-08e538fcf224)
+
+berisi list film dengan nilai vote terbanyak
+
+- budget
+
+![image](https://github.com/athar3/MovieRecommendation/assets/72434013/f6fb8e8d-7bdb-4079-bb3f-8fe2b972e452)
+
+berisi list film dengan budget tertinggi
+
+- revenue
+
+![image](https://github.com/athar3/MovieRecommendation/assets/72434013/e56f2c22-e5e7-44d1-b5a1-bcf7270331ed)
+
+berisi list film dengan pendapatan tertinggi
+
+
 
 ## Data Preparation
 Teknik yang digunakan dalam Data Preparation yaitu:
@@ -55,48 +88,58 @@ Teknik yang digunakan dalam Data Preparation yaitu:
 
 
 ## Modeling
-Model yang digunakan proyek kali ini yaitu XGBoost (eXtreme Gradient Boosting). extreme gradien merupakan algoritma Machine Learning yang mencoba memprediksi variabel target secara akurat dengan menggabungkan gabungan perkiraan dari serangkaian model yang lebih sederhana. Algoritma XGBoost berkinerja baik dalam machine learning karena penanganannya yang kuat untuk berbagai jenis data, hubungan, distribusi, dan variasi hyperparameter yang dapat disesuaikan.
+### Content Based Filtering
+Content-based filtering adalah salah satu metode dalam sistem rekomendasi yang mengandalkan informasi tentang item yang disukai oleh pengguna untuk memberikan rekomendasi. Rumus dasar untuk content-based filtering adalah menghitung sejauh mana item-item dalam dataset cocok dengan preferensi pengguna berdasarkan atribut-atribut tertentu. Rumusnya dapat dijelaskan sebagai berikut:
+#### Representasi Pengguna (User Profile):
+Pertama, kita perlu menghitung profil preferensi pengguna terhadap atribut-atribut yang relevan. Ini bisa dilakukan dengan cara menjumlahkan atau menghitung bobot dari atribut-atribut yang dimiliki oleh item-item yang disukai oleh pengguna. Jika pengguna memberikan peringkat pada item, bobot bisa berdasarkan peringkat. Contohnya, jika pengguna suka film-film komedi dengan peringkat tinggi, maka bobot komedi dalam profil pengguna akan tinggi.
 
-Sebuah fungsi evaluate_model digunakan untuk mengevaluasi kinerja model dengan menggunakan metrik tertentu (dalam hal ini, F1-score).
+Sebagai contoh, jika kita memiliki pengguna U dan atribut-atribut A1, A2, ..., An, maka profil pengguna U terhadap atribut A dapat dihitung sebagai berikut:
 
-Fungsi robust_evaluate_model digunakan untuk menangani kesalahan dan peringatan yang mungkin muncul selama evaluasi.
+$Profil(U, A) = \sum_{i=1}^{n} w_i \cdot A_i$
+di mana:
+- Profil(U, A) adalah profil preferensi pengguna U terhadap atribut A.
+- w_i adalah bobot yang mengindikasikan sejauh mana pengguna U menyukai atribut A_i.
+- A_i adalah nilai atribut dari item yang disukai oleh pengguna U.
 
-Fungsi evaluate_models digunakan untuk mengevaluasi semua model yang telah didefinisikan sebelumnya.
+#### Rekomendasi:
+Setelah profil preferensi pengguna dihitung, kita dapat menghitung sejauh mana setiap item dalam dataset cocok dengan profil pengguna. Salah satu metode yang umum digunakan adalah menghitung kesamaan kosinus (cosine similarity) antara profil pengguna dan atribut-atribut item. Item dengan kesamaan kosinus yang lebih tinggi akan dianggap sebagai rekomendasi yang lebih sesuai. Rumus untuk menghitung kesamaan kosinus adalah sebagai berikut:
 
-Fungsi summarize_results digunakan untuk mencetak ringkasan hasil evaluasi model.
+$Cosine\_Similarity(U, I) = \frac{Profil(U) \cdot Profil(I)}{||Profil(U)|| \cdot ||Profil(I)||}$
+di mana:
+- U adalah pengguna.
+- I adalah item yang akan dinilai kemungkinan disukai oleh pengguna U.
+- Profil(U) adalah profil preferensi pengguna U terhadap atribut-atribut.
+- Profil(I) adalah profil atribut item I.
+- |Profil(U)| dan |Profil(I)| adalah norma Euclidean dari masing-masing profil.
+
+Item dengan nilai Cosine_Similarity yang lebih tinggi akan menjadi rekomendasi yang lebih potensial untuk pengguna tersebut.
+
+##### Kelebihan
+- Tidak memerlukan data apapun terhadap pengguna
+- Dapat merekomendasikan item khusus
+
+##### Kekurangan
+- Membutuhkan banyak pengetahuan suatu domain
+- Membuat rekomendasi berdasarkan minat pengguna yang ada saja
 
 ## Evaluation
-di proyek ini, model yang dibuat merupakan kasus klasifikasi dan menggunakan beberapa metriks seperti:
-- akurasi: Akurasi merupakan kalkulasi presentase jumlah ketepatan prediksi dari jumlah seluruh data yang diprediksi.
-Dinyatakan dalam persentase, akurasi = (Jumlah prediksi benar) / (Jumlah total data).
-pada model ini mendapatkan hasil:
+Untuk evaluasi dari sistem rekomendasi dengan pendekatan *content based filtering* dapat menggunakan salah satu metric yaitu *precision@K*. Yaitu *Precision* adalah perbandingan antara *True Positive (TP)* dengan banyaknya data yang diprediksi positif. Atau juga bisa ditulis secara matematis sebagai berikut :
 
-|Train Score   |0.8864233625971649   |
-|---|---|
-|Test Score   |0.8926334625708321   |
+*precision = TP / (TP + FP)*
 
-Hasil penerapan akurasi pada proyek ini:
+dimana :
+TP = *True Positive* atau positif yang sebenarnya
+FP = *False Positive* atau positif yang salah dari hasil prediksi
 
-|Train Score   |0.8864233625971649   |
+Namun pada sistem rekomendasi tidak akan menggunakan *True positive* atau *False Positive* melainkan *overview* yang diberikan pada film untuk menentukan buku yang direkomendasikan relevan atau tidak. Dengan rumus sebagai berikut :
 
-yang berarti pada data pelatihan model berhasil memprediksi dengan benar sekitar 88.64% dari semua sampel.
+*precision@K = (# of recommended item that relevan) / (# of recommended item)*
 
-|Test Score   |0.8926334625708321   | 
+Evaluasi dengan precision@K memberikan gambaran tentang seberapa baik sistem rekomendasi dalam menghadirkan item yang sesuai di antara K rekomendasi pertama yang diberikan kepada pengguna. Semakin tinggi nilai precision@K, semakin baik sistem dalam menghadirkan item yang relevan ke pengguna dalam K rekomendasi pertama.
 
-yang berarti pada data pengujian model berhasil memprediksi dengan benar sekitar 89.26% dari semua sampel.
+Dalam konteks Content-Based Filtering, sistem menggunakan atribut atau konten item, seperti deskripsi atau overview pada film, untuk membuat rekomendasi. Penggunaan precision@K membantu mengukur sejauh mana metode ini berhasil dalam mencocokkan atribut atribut pengguna dengan atribut item dan menghasilkan rekomendasi yang sesuai. Nilai precision@K yang tinggi menunjukkan bahwa sistem dapat mengidentifikasi dengan baik item-item yang sesuai dengan preferensi pengguna berdasarkan atribut kontennya.
 
+- hasil
+<img width="317" alt="image" src="https://github.com/athar3/MovieRecommendation/assets/72434013/3cc87abc-e8eb-432d-b608-21036af9436c">
 
-- f1 score: nilai Harmonic Mean (Rata-rata Harmonik) dari Precision dan Recall.
-Precision adalah sejauh mana prediksi positif model adalah benar. Precision dihitung sebagai (True Positives) / (True Positives + False Positives).
-Recall adalah sejauh mana model dapat mendeteksi semua instance yang benar. Recall dihitung sebagai (True Positives) / (True Positives + False Negatives).
-F1-score memberikan keseluruhan pengukuran performa model yang mempertimbangkan trade-off antara Precision dan Recall.
-
-|   |  f1-score |
-|---|---|
-|  0_good_loan |  0.99 |
-|  1_bad_loan |  0.89 |
-
-Hasil penerapan F1-score pada proyek ini:
-
-F1-score untuk kelas pertama: 0.99 (dapat diinterpretasikan sebagai sangat baik)
-F1-score untuk kelas kedua: 0.89 (dapat diinterpretasikan sebagai baik)
+Terlihat bahwa rekomendasi dari film Avatar keseluruhannya adalah film-film bertema petualangan. Ini dikarenakan deskripsi film avatar merupakan film petualangan dan film-film yang direkomendasikan juga merupakan film petualangan berdasarkan deskripsi.
