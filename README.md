@@ -76,7 +76,7 @@ Berisi list film dengan nilai vote terbanyak
   
 ![image](https://github.com/athar3/MovieRecommendation/assets/72434013/48f1d89b-51f0-471d-8354-5a9666c19c27)
 
-Berisi list film paling populer
+Berisi list film paling populer.
 
 - runtime
   
@@ -88,19 +88,19 @@ berisi list film dengan runtime terlama.
 
 ![image](https://github.com/athar3/MovieRecommendation/assets/72434013/cdcce5f7-1367-4bac-9399-08e538fcf224)
 
-berisi list film dengan nilai vote terbanyak
+berisi list film dengan nilai vote terbanyak.
 
 - budget
 
 ![image](https://github.com/athar3/MovieRecommendation/assets/72434013/f6fb8e8d-7bdb-4079-bb3f-8fe2b972e452)
 
-berisi list film dengan budget tertinggi
+berisi list film dengan budget tertinggi.
 
 - revenue
 
 ![image](https://github.com/athar3/MovieRecommendation/assets/72434013/e56f2c22-e5e7-44d1-b5a1-bcf7270331ed)
 
-berisi list film dengan pendapatan tertinggi
+berisi list film dengan pendapatan tertinggi.
 
 
 
