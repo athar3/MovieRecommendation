@@ -113,10 +113,14 @@ Teknik yang digunakan dalam Data Preparation yaitu:
 ## Modeling
 ### Content Based Filtering
 Content-based filtering adalah salah satu metode dalam sistem rekomendasi yang mengandalkan informasi tentang item yang disukai oleh pengguna untuk memberikan rekomendasi. Rumus dasar untuk content-based filtering adalah menghitung sejauh mana item-item dalam dataset cocok dengan preferensi pengguna berdasarkan atribut-atribut tertentu. Rumusnya dapat dijelaskan sebagai berikut:
-#### Representasi Pengguna (User Profile):
-Pertama, kita perlu menghitung profil preferensi pengguna terhadap atribut-atribut yang relevan. Ini bisa dilakukan dengan cara menjumlahkan atau menghitung bobot dari atribut-atribut yang dimiliki oleh item-item yang disukai oleh pengguna. Jika pengguna memberikan peringkat pada item, bobot bisa berdasarkan peringkat. Contohnya, jika pengguna suka film-film komedi dengan peringkat tinggi, maka bobot komedi dalam profil pengguna akan tinggi.
 
-Sebagai contoh, jika kita memiliki pengguna U dan atribut-atribut A1, A2, ..., An, maka profil pengguna U terhadap atribut A dapat dihitung sebagai berikut:
+<img width="818" alt="image" src="https://github.com/athar3/MovieRecommendation/assets/72434013/99d0dded-61ee-43e1-bb77-2f88e3f77114">
+
+
+#### Representasi Pengguna (User Profile):
+Pertama, perlu menghitung profil preferensi pengguna terhadap atribut-atribut yang relevan. Ini bisa dilakukan dengan cara menjumlahkan atau menghitung bobot dari atribut-atribut yang dimiliki oleh item-item yang disukai oleh pengguna. Jika pengguna memberikan peringkat pada item, bobot bisa berdasarkan peringkat. Contohnya, jika pengguna suka film-film komedi dengan peringkat tinggi, maka bobot komedi dalam profil pengguna akan tinggi.
+
+Sebagai contoh, jika memiliki pengguna U dan atribut-atribut A1, A2, ..., An, maka profil pengguna U terhadap atribut A dapat dihitung sebagai berikut:
 
 $Profil(U, A) = \sum_{i=1}^{n} w_i \cdot A_i$
 di mana:
@@ -125,7 +129,7 @@ di mana:
 - A_i adalah nilai atribut dari item yang disukai oleh pengguna U.
 
 #### Rekomendasi:
-Setelah profil preferensi pengguna dihitung, kita dapat menghitung sejauh mana setiap item dalam dataset cocok dengan profil pengguna. Salah satu metode yang umum digunakan adalah menghitung kesamaan kosinus (cosine similarity) antara profil pengguna dan atribut-atribut item. Item dengan kesamaan kosinus yang lebih tinggi akan dianggap sebagai rekomendasi yang lebih sesuai. Rumus untuk menghitung kesamaan kosinus adalah sebagai berikut:
+Setelah profil preferensi pengguna dihitung, dapat menghitung sejauh mana setiap item dalam dataset cocok dengan profil pengguna. Salah satu metode yang umum digunakan adalah menghitung kesamaan kosinus (cosine similarity) antara profil pengguna dan atribut-atribut item. Item dengan kesamaan kosinus yang lebih tinggi akan dianggap sebagai rekomendasi yang lebih sesuai. Rumus untuk menghitung kesamaan kosinus adalah sebagai berikut:
 
 $Cosine\_Similarity(U, I) = \frac{Profil(U) \cdot Profil(I)}{||Profil(U)|| \cdot ||Profil(I)||}$
 di mana:
@@ -137,6 +141,7 @@ di mana:
 
 Item dengan nilai Cosine_Similarity yang lebih tinggi akan menjadi rekomendasi yang lebih potensial untuk pengguna tersebut.
 
+
 ##### Kelebihan
 - Tidak memerlukan data apapun terhadap pengguna
 - Dapat merekomendasikan item khusus
@@ -146,7 +151,23 @@ Item dengan nilai Cosine_Similarity yang lebih tinggi akan menjadi rekomendasi y
 - Membuat rekomendasi berdasarkan minat pengguna yang ada saja
 
 #### Hasil
-<img width="317" alt="image" src="https://github.com/athar3/MovieRecommendation/assets/72434013/3cc87abc-e8eb-432d-b608-21036af9436c">
+<img width="265" alt="image" src="https://github.com/athar3/MovieRecommendation/assets/72434013/e38010fc-863f-4814-88bc-094ccb07369a">
+
+**Output**
+
+|  |      |
+|------|-----------------------|
+| 3604 |     Apollo 18        |
+| 2130 |    The American      |
+|  634 |     The Matrix       |
+| 1341 | The Inhabited Island |
+|  529 |  Tears of the Sun    |
+| 1610 |        Hanna          |
+|  311 | The Adventures of Pluto Nash |
+|  847 |       Semi-Pro        |
+|  775 |      Supernova       |
+| 2628 | Blood and Chocolate  |
+
 
 Terlihat bahwa rekomendasi dari film Avatar keseluruhannya adalah film-film bertema petualangan. Ini dikarenakan deskripsi film avatar merupakan film petualangan dan film-film yang direkomendasikan juga merupakan film petualangan berdasarkan deskripsi.
 
