@@ -168,5 +168,5 @@ Evaluasi dengan precision@K memberikan gambaran tentang seberapa baik sistem rek
 Dalam konteks Content-Based Filtering, sistem menggunakan atribut atau konten item, seperti deskripsi atau overview pada film, untuk membuat rekomendasi. Penggunaan precision@K membantu mengukur sejauh mana metode ini berhasil dalam mencocokkan atribut atribut pengguna dengan atribut item dan menghasilkan rekomendasi yang sesuai. Nilai precision@K yang tinggi menunjukkan bahwa sistem dapat mengidentifikasi dengan baik item-item yang sesuai dengan preferensi pengguna berdasarkan atribut kontennya.
 
 
-**sitasi dan rujukan**
-Format Referensi: [Implementasi Algoritma Cosine Similarity Dan Metode TF-IDF Berbasis PHP Untuk Menghasilkan Rekomendasi Seminar](https://publikasi.mercubuana.ac.id/index.php/fasilkom/article/view/8830/3555) 
+## Rujukan
+- [Implementasi Algoritma Cosine Similarity Dan Metode TF-IDF Berbasis PHP Untuk Menghasilkan Rekomendasi Seminar](https://publikasi.mercubuana.ac.id/index.php/fasilkom/article/view/8830/3555) 
