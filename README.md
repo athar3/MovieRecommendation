@@ -39,7 +39,31 @@ Tujuan dari pernyataan masalah:
 - dataset memiliki 4803 baris 
 - Terdapat beberapa baris yang kosong (missing value) tapi karena tidak berpengaruh maka dibiarkan saja.
 
-- variabel jelasi
+### Penjelasan tiap kolom
+- "title": Kolom ini berisi judul atau nama film, yang mengidentifikasi film tersebut.
+- "cast": Kolom ini berisi daftar para pemeran atau aktor yang berperan dalam film.
+- "crew": Kolom ini berisi informasi mengenai para anggota kru atau staf yang terlibat dalam produksi film, seperti sutradara, produser, sinematografer, dan lainnya.
+- "budget": Kolom ini berisi informasi mengenai anggaran (biaya) produksi film.
+- "genres": Kolom ini berisi genre-genre film.
+- "homepage": Kolom ini berisi tautan ke halaman web resmi film.
+- "id": Kolom ini berisi identifikasi unik untuk setiap film dalam dataset.
+- "keywords": Kolom ini berisi kata kunci yang berkaitan dengan film.
+- "original_language": Kolom ini berisi bahasa asli film.
+- "original_title": Kolom ini berisi judul asli film.
+- "overview": Kolom ini berisi ringkasan atau deskripsi singkat film.
+- "popularity": Kolom ini berisi tingkat popularitas film.
+- "production_companies": Kolom ini berisi daftar perusahaan produksi yang terlibat dalam pembuatan film.
+- "production_countries": Kolom ini berisi negara-negara tempat film diproduksi.
+- "release_date": Kolom ini berisi tanggal rilis film.
+- "revenue": Kolom ini berisi pendapatan atau pemasukan film.
+- "runtime": Kolom ini berisi durasi atau panjang film dalam menit.
+- "spoken_languages": Kolom ini berisi bahasa-bahasa yang digunakan dalam film.
+- "status": Kolom ini berisi status produksi film.
+- "tagline": Kolom ini berisi slogan atau tagline promosi film, dengan masalah mungkin terkait dengan data yang hilang.
+- "title": Kolom ini berisi judul atau nama film.
+- "vote_average": Kolom ini berisi rata-rata peringkat yang diberikan oleh penonton atau kritikus.
+- "vote_count": Kolom ini berisi jumlah peringkat atau ulasan yang diberikan kepada film.
+
 
 ### Exploratory Data Analysis
 - vote_count
