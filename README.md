@@ -114,7 +114,7 @@ Teknik yang digunakan dalam Data Preparation yaitu:
 ### Content Based Filtering
 Content-based filtering adalah salah satu metode dalam sistem rekomendasi yang mengandalkan informasi tentang item yang disukai oleh pengguna untuk memberikan rekomendasi. Rumus dasar untuk content-based filtering adalah menghitung sejauh mana item-item dalam dataset cocok dengan preferensi pengguna berdasarkan atribut-atribut tertentu. Rumusnya dapat dijelaskan sebagai berikut:
 
-<img width="818" alt="image" src="https://github.com/athar3/MovieRecommendation/assets/72434013/99d0dded-61ee-43e1-bb77-2f88e3f77114">
+$Precision@K = \frac{\ of\ recommended\ items\ that\ are\ relevant}{\ of\ recommended\ items}$
 
 
 #### Representasi Pengguna (User Profile):
@@ -182,11 +182,12 @@ FP = *False Positive* atau positif yang salah dari hasil prediksi
 
 Namun pada sistem rekomendasi tidak akan menggunakan *True positive* atau *False Positive* melainkan *overview* yang diberikan pada film untuk menentukan buku yang direkomendasikan relevan atau tidak. Dengan rumus sebagai berikut :
 
-*precision@K = (# of recommended item that relevan) / (# of recommended item)*
+$Precision@K = \frac{\ of\ recommended\ items\ that\ are\ relevant}{\ of\ recommended\ items}$
 
 Evaluasi dengan precision@K memberikan gambaran tentang seberapa baik sistem rekomendasi dalam menghadirkan item yang sesuai di antara K rekomendasi pertama yang diberikan kepada pengguna. Semakin tinggi nilai precision@K, semakin baik sistem dalam menghadirkan item yang relevan ke pengguna dalam K rekomendasi pertama.
 
 Dalam konteks Content-Based Filtering, sistem menggunakan atribut atau konten item, seperti deskripsi atau overview pada film, untuk membuat rekomendasi. Penggunaan precision@K membantu mengukur sejauh mana metode ini berhasil dalam mencocokkan atribut atribut pengguna dengan atribut item dan menghasilkan rekomendasi yang sesuai. Nilai precision@K yang tinggi menunjukkan bahwa sistem dapat mengidentifikasi dengan baik item-item yang sesuai dengan preferensi pengguna berdasarkan atribut kontennya.
+
 
 <img width="406" alt="image" src="https://github.com/athar3/MovieRecommendation/assets/72434013/61bb4574-8adc-4891-a891-5bc770b6127e">
 
