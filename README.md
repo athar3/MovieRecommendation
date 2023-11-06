@@ -188,6 +188,30 @@ Evaluasi dengan precision@K memberikan gambaran tentang seberapa baik sistem rek
 
 Dalam konteks Content-Based Filtering, sistem menggunakan atribut atau konten item, seperti deskripsi atau overview pada film, untuk membuat rekomendasi. Penggunaan precision@K membantu mengukur sejauh mana metode ini berhasil dalam mencocokkan atribut atribut pengguna dengan atribut item dan menghasilkan rekomendasi yang sesuai. Nilai precision@K yang tinggi menunjukkan bahwa sistem dapat mengidentifikasi dengan baik item-item yang sesuai dengan preferensi pengguna berdasarkan atribut kontennya.
 
+<img width="406" alt="image" src="https://github.com/athar3/MovieRecommendation/assets/72434013/61bb4574-8adc-4891-a891-5bc770b6127e">
+
+|   title                         |   genres                                                      |
+|---------------------------------|---------------------------------------------------------------|
+|   Apollo 18                    |   [{"id": 27, "name": "Horror"}, {"id": 53, "name": ...     |
+|   The American                  |   [{"id": 80, "name": "Crime"}, {"id": 18, "name": ...     |
+|   The Matrix                  |   [{"id": 28, "name": "Action"}, {"id": 878, "na...       |
+|   The Inhabited Island   |   [{"id": 28, "name": "Action"}, {"id": 14, "nam...       |
+|   Tears of the Sun           |   [{"id": 28, "name": "Action"}, {"id": 18, "nam...       |
+|   Hanna                           |   [{"id": 28, "name": "Action"}, {"id": 53, "nam...       |
+|   The Adventures of Pluto Nash |   [{"id": 28, "name": "Action"}, {"id": 35, "nam...       |
+|   Semi-Pro                       |   [{"id": 35, "name": "Comedy"}]                             |
+|   Supernova                    |   [{"id": 27, "name": "Horror"}, {"id": 878, "na...       |
+|   Blood and Chocolate    |   [{"id": 18, "name": "Drama"}, {"id": 14, "name...       |
+
+Maka hasil evaluasi adalah:
+
+Precision = #of recommendation that are relevant/#of item we recommend.
+
+Pada contoh rekomendasi film di atas:
+
+Precission = 5/10.
+
+Jadi presisinya = 50%
 
 ## Rujukan
 - [Implementasi Algoritma Cosine Similarity Dan Metode TF-IDF Berbasis PHP Untuk Menghasilkan Rekomendasi Seminar](https://publikasi.mercubuana.ac.id/index.php/fasilkom/article/view/8830/3555) 
