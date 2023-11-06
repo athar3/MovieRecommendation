@@ -1,14 +1,11 @@
 # Laporan Proyek Machine Learning - Muhammad Athar Althariq Irawan
 
-## Domain Proyek
+## Project Overview
 
 Rekomendasi film (_movie recommendation_) adalah salah satu aspek yang sangat penting dalam industri hiburan, terutama dalam membantu penonton menemukan film yang sesuai dengan preferensi mereka. Dalam proyek ini, akan digunakan metode _content-based filtering_ untuk memberikan rekomendasi film kepada penonton berdasarkan konten atau karakteristik film yang mereka sukai.
 
 ### Contoh Kasus:
 Seorang pengguna ingin menerima rekomendasi film berdasarkan film-film yang telah mereka tonton dan sukai sebelumnya. Dengan menganalisis karakteristik film seperti berdasarkan dari ringkasan, sistem dapat memberikan rekomendasi film yang memiliki kesamaan karakteristik dengan film-film yang mereka sukai.
-
-
-Format Referensi: [Implementasi Algoritma Cosine Similarity Dan Metode TF-IDF Berbasis PHP Untuk Menghasilkan Rekomendasi Seminar](https://publikasi.mercubuana.ac.id/index.php/fasilkom/article/view/8830/3555) 
 
 ## Business Understanding
 
@@ -16,8 +13,8 @@ Format Referensi: [Implementasi Algoritma Cosine Similarity Dan Metode TF-IDF Be
 
 Masalah latar belakang:
 
-- Bagaimana dapat memberikan rekomendasi film kepada pengguna berdasarkan film-film yang mereka sukai?
-- Bagaimana dapat mengidentifikasi kesamaan antara film-film yang telah ditonton oleh pengguna dan film-film lainnya berdasarkan karakteristik seperti genre, sutradara, pemain, dan peringkat?
+- Bagaimana dapat memberikan rekomendasi film kepada pengguna berdasarkan ringkasan film-film yang mereka sukai?
+- Bagaimana dapat mengidentifikasi kesamaan antara film-film yang telah ditonton oleh pengguna dan film-film lainnya berdasarkan karakteristik seperti berdasarkan dari ringkasan?
 - Bagaimana mengimplementasikan content-based filtering untuk memberikan rekomendasi yang relevan kepada pengguna?
 
 ### Goals
@@ -40,7 +37,9 @@ Tujuan dari pernyataan masalah:
 
 - dataset ini berbentuk .zip yang berisi 2 file `.csv`.
 - dataset memiliki 4803 baris 
-- Terdapat beberapa baris yang kosong (missing value) tapi karena tidak berpengaruh maka dibiarkan saja. 
+- Terdapat beberapa baris yang kosong (missing value) tapi karena tidak berpengaruh maka dibiarkan saja.
+
+- variabel jelasi
 
 ### Exploratory Data Analysis
 - vote_count
@@ -122,6 +121,11 @@ Item dengan nilai Cosine_Similarity yang lebih tinggi akan menjadi rekomendasi y
 - Membutuhkan banyak pengetahuan suatu domain
 - Membuat rekomendasi berdasarkan minat pengguna yang ada saja
 
+#### Hasil
+<img width="317" alt="image" src="https://github.com/athar3/MovieRecommendation/assets/72434013/3cc87abc-e8eb-432d-b608-21036af9436c">
+
+Terlihat bahwa rekomendasi dari film Avatar keseluruhannya adalah film-film bertema petualangan. Ini dikarenakan deskripsi film avatar merupakan film petualangan dan film-film yang direkomendasikan juga merupakan film petualangan berdasarkan deskripsi.
+
 ## Evaluation
 Untuk evaluasi dari sistem rekomendasi dengan pendekatan *content based filtering* dapat menggunakan salah satu metric yaitu *precision@K*. Yaitu *Precision* adalah perbandingan antara *True Positive (TP)* dengan banyaknya data yang diprediksi positif. Atau juga bisa ditulis secara matematis sebagai berikut :
 
@@ -139,7 +143,6 @@ Evaluasi dengan precision@K memberikan gambaran tentang seberapa baik sistem rek
 
 Dalam konteks Content-Based Filtering, sistem menggunakan atribut atau konten item, seperti deskripsi atau overview pada film, untuk membuat rekomendasi. Penggunaan precision@K membantu mengukur sejauh mana metode ini berhasil dalam mencocokkan atribut atribut pengguna dengan atribut item dan menghasilkan rekomendasi yang sesuai. Nilai precision@K yang tinggi menunjukkan bahwa sistem dapat mengidentifikasi dengan baik item-item yang sesuai dengan preferensi pengguna berdasarkan atribut kontennya.
 
-- hasil
-<img width="317" alt="image" src="https://github.com/athar3/MovieRecommendation/assets/72434013/3cc87abc-e8eb-432d-b608-21036af9436c">
 
-Terlihat bahwa rekomendasi dari film Avatar keseluruhannya adalah film-film bertema petualangan. Ini dikarenakan deskripsi film avatar merupakan film petualangan dan film-film yang direkomendasikan juga merupakan film petualangan berdasarkan deskripsi.
+**sitasi dan rujukan**
+Format Referensi: [Implementasi Algoritma Cosine Similarity Dan Metode TF-IDF Berbasis PHP Untuk Menghasilkan Rekomendasi Seminar](https://publikasi.mercubuana.ac.id/index.php/fasilkom/article/view/8830/3555) 
